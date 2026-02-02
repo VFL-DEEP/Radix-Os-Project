@@ -218,7 +218,7 @@ At first, congragulations, you just finished a simple preparing the system part 
      ```
   
 
-## Second Way: Enter the Chroot environment and compile whatever you want!
+## Second Way: Enter the Chroot environment and compile everything!
 
 1. If you choose this way, you are Linux expert and you wanna have fun compiling every single thing you want :) So we are gonna give you a fresh chroot environment then you have the freedom to compile any package you want among all 94 packages in sources folder. After you think you compiled enough, the kernel compilation steps are same with the First way. Have fun :)
 
