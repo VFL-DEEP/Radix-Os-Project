@@ -171,13 +171,6 @@
      chmod -v 600  /var/log/btmp
      ```
 
-10. As the last step, now we need to delete a single file on your system because it may cause trouble you in the future. Also do not skip without creating this symlinks or your installation might fail.
-- **You can delete the file with this command**:
-     ```
-     find $validebagos/usr/{lib,libexec} -name \*.la -delete
-     ```
-
-
 Enter the Chroot environment and compile everything!
 
 1. If you arrived here, you are an Linux expert and you wanna have fun compiling every single thing you want :) So we are gonna give you a fresh chroot environment then you have the freedom to compile any package you want among all 94 packages in sources folder. After you think you compiled enough, the kernel compilation steps are same with the First way. Have fun :)
@@ -188,7 +181,7 @@ Enter the Chroot environment and compile everything!
          HOME=$validebagos/root                  \
          TERM="$TERM"                \
          PS1='(validebagos chroot) \u:\w\$ ' \
-         PATH=/usr/bin:$validebagos/usr/sbin     \
+         PATH=/usr/bin:/usr/sbin     \
          MAKEFLAGS="-j$(nproc)"      \
          TESTSUITEFLAGS="-j$(nproc)" \
          /bin/bash --login
