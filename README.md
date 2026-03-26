@@ -16,13 +16,13 @@
 
    - **At first, you need  a mounting point on your hostsytem. You can copy the os files to mountponit with this command**:
      ```
-     cp Validebag-Os-Project /mnt/radixos
+     cp Radix-Os-Project /mnt/radixos
      ```
 
 2. After creating the mount directory, you need to create a varibale to simplify the installation guide.
    - **You can create the variable with this command**:
      ```
-     export validebagos=/mnt/radixos
+     export radixos=/mnt/radixos
      ```
 
 3. After creating the variable, you need to set umask in case your distro uses a different one.
