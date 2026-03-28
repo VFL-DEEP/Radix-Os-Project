@@ -1,4 +1,4 @@
-<p align="center"><img src="/img/newlogo.png" alt="validebagos logo" width="150"></p>
+<p align="center"><img src="/img/newlogo.png" alt="radix os logo" width="150"></p>
 
 <h1 align="center">Radix Os 0.7 Beta Version</h1>
 
