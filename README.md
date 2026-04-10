@@ -22,7 +22,7 @@
 2. After creating the mount directory, you need to create a varibale to simplify the installation guide.
    - **You can create the variable with this command**:
      ```
-     export radixos=/mnt/radixlinux
+     export radixlinux=/mnt/radixlinux
      ```
 
 3. After creating the variable, you need to set umask in case your distro uses a different one.
