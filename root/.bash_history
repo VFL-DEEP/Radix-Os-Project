@@ -57,3 +57,19 @@ cd ..
 rm -Rf psmisc-23.7
 clear
 exit
+clear
+neofetch
+cd sources/
+clear
+tar -xvf gettext-0.26.tar.xz 
+cd gettext-0.26
+clear
+./configure --prefix=/usr                --disable-static             --docdir=/usr/share/doc/gettext-0.26
+make -j4
+make check
+make install
+chmod -v 0755 /usr/lib/preloadable_libintl.so
+cd ..
+rm -Rf gettext-0.26
+clear
+exit
