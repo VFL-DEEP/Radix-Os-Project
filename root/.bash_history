@@ -43,3 +43,17 @@ install -m644 doc/sed.html /usr/share/doc/sed-4.9
 cd ..
 rm -Rf sed-4.9
 exit
+clear
+cd sources/q
+cd sources/
+clear
+tar -xvf psmisc-23.7.tar.xz 
+cd psmisc-23.7
+./configure --prefix=/usr
+make
+make check
+make install
+cd ..
+rm -Rf psmisc-23.7
+clear
+exit
