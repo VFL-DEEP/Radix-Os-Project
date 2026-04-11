@@ -87,3 +87,16 @@ cd ..
 rm -Rf bison-3.8.2
 clear
 exit
+clear
+cd sources/
+tar -xvf grep-3.12.tar.xz 
+cd grep-3.12
+clear
+sed -i "s/echo/#echo/" src/egrep.sh
+./configure --prefix=/usr
+make -j4
+make check
+make install
+cd ..
+rm -Rf grep-3.12
+exit
