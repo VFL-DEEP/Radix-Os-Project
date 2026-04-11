@@ -73,3 +73,17 @@ cd ..
 rm -Rf gettext-0.26
 clear
 exit
+clear
+cd sources/
+tar -xvf bison-3.8.2.tar.xz 
+cd bison-3.8.2
+clear
+./configure --prefix=/usr --docdir=/usr/share/doc/bison-3.8.2
+make -j4
+clear
+make check
+make install
+cd ..
+rm -Rf bison-3.8.2
+clear
+exit
