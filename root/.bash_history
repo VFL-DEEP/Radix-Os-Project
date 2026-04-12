@@ -139,3 +139,19 @@ clear
 cd ..
 rm -Rf libtool-2.5.4
 exit
+clear
+cd sources/
+clear
+tar -xvf gdbm-1.26.tar.gz 
+cd gdbm-1.26
+clear
+./configure --prefix=/usr                --disable-static             --enable-libgdbm-compat
+make -j4
+make check
+clear
+make install
+clear
+cd ..
+rm -Rf gdbm-1.26
+clear
+exit
