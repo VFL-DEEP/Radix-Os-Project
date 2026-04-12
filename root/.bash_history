@@ -124,3 +124,18 @@ clear
 exec /usr/bin/bash --login
 clear
 exit
+clear
+cd sources/
+tar -xvf libtool-2.5.4.tar.xz 
+cd libtool-2.5.4
+./configure --prefix=/usr
+make
+clear
+make check
+clear
+make install
+rm -fv /usr/lib/libltdl.a
+clear
+cd ..
+rm -Rf libtool-2.5.4
+exit
