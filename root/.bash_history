@@ -237,3 +237,18 @@ cd ..
 rm -Rf perl-5.42.0
 clear
 exit
+clear
+cd sources/
+ls
+clear
+tar -xvf XML-Parser-2.47.tar.gz 
+cd XML-Parser-2.47
+clear
+perl Makefile.PL
+make -j4
+make install
+clear
+cd ..
+rm -Rf XML-Parser-2.47
+clear
+exit
