@@ -155,3 +155,20 @@ cd ..
 rm -Rf gdbm-1.26
 clear
 exit
+clear
+cd sources/
+ls
+clear
+tar -xvf gperf-3.3.tar.gz 
+cd gperf-3.3
+clear
+./configure --prefix=/usr --docdir=/usr/share/doc/gperf-3.3
+make -j4
+clear
+make check
+clear
+make install
+cd ..
+rm -Rf gperf-3.3
+clear
+exit
