@@ -202,3 +202,21 @@ cd ..
 rm -Rf inetutils-2.6
 clear
 exit
+clear
+neofetch
+clear
+cd sources/
+cleart
+clear
+tar -xvf less-679.tar.gz 
+cd less-679
+clear
+./configure --prefix=/usr --sysconfdir=/etc
+make -j4
+make check
+make install
+clear
+cd ..
+rm -Rf less-679
+clear
+exit
