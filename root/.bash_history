@@ -186,3 +186,19 @@ install -v -m644 doc/*.{html,css} /usr/share/doc/expat-2.7.1
 cd ..
 rm -Rf expat-2.7.1
 exit
+clear
+cd sources/
+tar -xvf inetutils-2.6.tar.xz 
+cd inetutils-2.6
+clear
+sed -i 's/def HAVE_TERMCAP_TGETENT/ 1/' telnet/telnet.c
+./configure --prefix=/usr                    --bindir=/usr/bin                --localstatedir=/var             --disable-logger                 --disable-whois                  --disable-rcp                    --disable-rexec                  --disable-rlogin                 --disable-rsh                    --disable-servers
+make -j4
+make install
+clear
+mv -v /usr/{,s}bin/ifconfig
+clear
+cd ..
+rm -Rf inetutils-2.6
+clear
+exit
