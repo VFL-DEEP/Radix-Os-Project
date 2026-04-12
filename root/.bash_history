@@ -172,3 +172,17 @@ cd ..
 rm -Rf gperf-3.3
 clear
 exit
+clear
+cd sources/
+clear
+tar -xvf expat-2.7.1.tar.xz 
+cd expat-2.7.1
+clear
+./configure --prefix=/usr                --disable-static             --docdir=/usr/share/doc/expat-2.7.1
+make -j4
+make check
+make install
+install -v -m644 doc/*.{html,css} /usr/share/doc/expat-2.7.1
+cd ..
+rm -Rf expat-2.7.1
+exit
