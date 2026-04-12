@@ -167,3 +167,7 @@
 -zlib‑1.3.1: zlib compression (Jean‑loup Gailly & Mark Adler)
 
 -zstd‑1.5.7: Zstandard compression (Facebook open source)
+
+-neofetch: distro name and logo showing (Dylan Araps)
+
+-nano: a simple text editor (GNU Project)
