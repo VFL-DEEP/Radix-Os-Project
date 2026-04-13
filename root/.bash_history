@@ -301,3 +301,22 @@ cd ..
 rm -Rf automake-1.18.1
 clear
 exit
+clear
+cd sources/
+clear
+tar -xvf openssl-3.5.2.tar.gz 
+cd openssl-3.5.2
+clear
+./config --prefix=/usr                  --openssldir=/etc/ssl          --libdir=lib                   shared                         zlib-dynamic
+clear
+make
+clear
+sed -i '/INSTALL_LIBS/s/libcrypto.a libssl.a//' Makefile
+make MANSUFFIX=ssl install
+mv -v /usr/share/doc/openssl /usr/share/doc/openssl-3.5.2
+cp -vfr doc/* /usr/share/doc/openssl-3.5.2
+clear
+cd ..
+rm -Rf openssl-3.5.2
+clear
+exit
