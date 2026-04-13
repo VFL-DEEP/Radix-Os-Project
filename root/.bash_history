@@ -341,3 +341,18 @@ cd ..
 rm -Rf elfutils-0.193
 clear
 exit
+clear
+cd sources/
+clear
+tar -xvf libffi-3.5.2.tar.gz 
+cd libffi-3.5.2
+clear
+./configure --prefix=/usr                --disable-static             --with-gcc-arch=native
+clear
+make -j4
+make install
+clear
+cd ..
+rm -Rf libffi-3.5.2
+clear
+exit
