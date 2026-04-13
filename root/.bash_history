@@ -280,3 +280,24 @@ cd ..
 rm -Rf autoconf-2.72
 clear
 exit
+clear
+neofetch
+ls
+,
+exit
+clear
+cd sources/
+clear
+tar -xvf automake-1.18.1.tar.xz 
+cd automake-1.18.1
+clear
+./configure --prefix=/usr --docdir=/usr/share/doc/automake-1.18.14
+./configure --prefix=/usr --docdir=/usr/share/doc/automake-1.18.1
+clear
+make -j4
+make install
+clear
+cd ..
+rm -Rf automake-1.18.1
+clear
+exit
