@@ -356,3 +356,27 @@ cd ..
 rm -Rf libffi-3.5.2
 clear
 exit
+clear
+cd sources/
+tar -xvf python-3.13.7-docs-html.tar.bz2 
+tar -xvf Python-3.13.7.tar.xz 
+rm -Rf python-3.13.7-docs-html
+cd Python-3.13.7
+clear
+./configure --prefix=/usr                      --enable-shared                    --with-system-expat                --enable-optimizations             --without-static-libpython
+make -j4
+make install
+cat > /etc/pip.conf << EOF
+[global]
+root-user-action = ignore
+disable-pip-version-check = true
+EOF
+
+clear
+install -v -dm755 /usr/share/doc/python-3.13.7/html
+tar --strip-components=1      --no-same-owner           --no-same-permissions     -C /usr/share/doc/python-3.13.7/html     -xvf ../python-3.13.7-docs-html.tar.bz2
+clear
+cd ..
+rm -Rf Python-3.13.7
+clear
+exit
