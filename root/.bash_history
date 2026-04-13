@@ -267,3 +267,16 @@ cd ..
 rm -Rf intltool-0.51.0
 clear
 exit
+clear
+neofetch
+cd sources/
+tar -xvf autoconf-2.72.tar.xz 
+cd autoconf-2.72
+clear
+./configure --prefix=/usr
+make -j4
+make install
+cd ..
+rm -Rf autoconf-2.72
+clear
+exit
