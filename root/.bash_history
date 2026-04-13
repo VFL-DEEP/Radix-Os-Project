@@ -320,3 +320,24 @@ cd ..
 rm -Rf openssl-3.5.2
 clear
 exit
+clear
+cd sources/
+clear
+ls
+clear
+tar -xvf elfutils-0.193.tar.bz2 
+cd elfutils-0.193
+clear
+./configure --prefix=/usr                    --disable-debuginfod             --enable-libdebuginfod=dummy
+clear
+make -j4
+clear
+neofetch
+make -C libelf install
+install -vm644 config/libelf.pc /usr/lib/pkgconfig
+rm /usr/lib/libelf.a
+clear
+cd ..
+rm -Rf elfutils-0.193
+clear
+exit
