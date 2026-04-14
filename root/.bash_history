@@ -1,21 +1,3 @@
-cd ..
-rm -Rf ncurses-6.5-20250809
-clear
-exit
-clear
-neofetch
-cd sources/
-tar -xvf sed-4.9.tar.xz 
-cd sed-4.9
-./configure --prefix=/usr
-make
-make html
-chown -R tester .
-su tester -c "PATH=$PATH make check"
-make install
-install -d -m755           /usr/share/doc/sed-4.9
-install -m644 doc/sed.html /usr/share/doc/sed-4.9
-cd ..
 rm -Rf sed-4.9
 exit
 clear
@@ -497,4 +479,22 @@ make install
 cd ..
 rm -Rf diffutils-3.12
 clear
+exit
+clear
+cd sources/
+tar -xvf gawk-5.3.2.tar.xz 
+cd gawk-5.3.2
+sed -i 's/extras//' Makefile.in
+./configure --prefix=/usr
+make -j4
+clear
+rm -f /usr/bin/gawk-5.3.2
+make install
+ln -sv gawk.1 /usr/share/man/man1/awk.1
+install -vDm644 doc/{awkforai.txt,*.{eps,pdf,jpg}} -t /usr/share/doc/gawk-5.3.2
+clear
+cd ..
+rm -Rf gawk-5.3.2
+clear
+cd ..
 exit
