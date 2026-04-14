@@ -393,3 +393,15 @@ cd ..
 rm -Rf flit_core-3.12.0
 clear
 exit
+clear
+cd sources/
+tar -xvf packaging-25.0.tar.gz 
+cd packaging-25.0
+clear
+pip3 wheel -w dist --no-cache-dir --no-build-isolation --no-deps $PWD
+pip3 install --no-index --find-links dist packaging
+clear
+cd ..
+rm -Rf packaging-25.0
+clear
+exit
