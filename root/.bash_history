@@ -418,3 +418,15 @@ cd ..
 rm -Rf wheel-0.46.1
 exi
 exit
+clear
+cd sources/
+clear
+tar -xvf setuptools-80.9.0.tar.gz 
+cd setuptools-80.9.0
+clear
+pip3 wheel -w dist --no-cache-dir --no-build-isolation --no-deps $PWD
+pip3 install --no-index --find-links dist setuptools
+cd ..
+rm -Rf setuptools-80.9.0
+clear
+exit
