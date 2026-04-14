@@ -430,3 +430,24 @@ cd ..
 rm -Rf setuptools-80.9.0
 clear
 exit
+clear
+cd sources/
+tar -xvf ninja-1.13.1.tar.gz 
+cd ninja-1.13.1
+clear
+export NINJAJOBS=4
+sed -i '/int Guess/a \
+  int   j = 0;\
+  char* jobs = getenv( "NINJAJOBS" );\
+  if ( jobs != NULL ) j = atoi( jobs );\
+  if ( j > 0 ) return j;\
+' src/ninja.cc
+python3 configure.py --bootstrap --verbose
+install -vm755 ninja /usr/bin/
+install -vDm644 misc/bash-completion /usr/share/bash-completion/completions/ninja
+install -vDm644 misc/zsh-completion  /usr/share/zsh/site-functions/_ninja
+clear
+cd ..
+rm -Rf ninja-1.13.1
+clear
+exit
