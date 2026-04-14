@@ -464,3 +464,21 @@ cd ..
 rm -Rf meson-1.8.3
 clear
 exit
+clear
+cd sources/
+clear
+tar -xvf kmod-34.2.tar.xz 
+cd kmod-34.2
+clear
+mkdir -p build
+cd build
+clear
+meson setup --prefix=/usr ..                --buildtype=release             -D manpages=false
+ninja
+ninja install
+clear
+cd ../..
+clear
+rm -Rf kmod-34.2
+clear
+exit
