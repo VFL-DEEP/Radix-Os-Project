@@ -1,25 +1,3 @@
-clear
-neofetch
-cd sources/
-clear
-tar -xvf gettext-0.26.tar.xz 
-cd gettext-0.26
-clear
-./configure --prefix=/usr                --disable-static             --docdir=/usr/share/doc/gettext-0.26
-make -j4
-make check
-make install
-chmod -v 0755 /usr/lib/preloadable_libintl.so
-cd ..
-rm -Rf gettext-0.26
-clear
-exit
-clear
-cd sources/
-tar -xvf bison-3.8.2.tar.xz 
-cd bison-3.8.2
-clear
-./configure --prefix=/usr --docdir=/usr/share/doc/bison-3.8.2
 make -j4
 clear
 make check
@@ -497,4 +475,26 @@ cd ..
 rm -Rf findutils-4.10.0
 clear
 cd ..
+exit
+clear
+cd sources/
+clea
+clear
+tar -xvf groff-1.23.0.tar.gz 
+cd groff-1.23.0
+clear
+PAGE=<paper_size> ./configure --prefix=/usr
+make -j4
+clear
+neofetch 
+clear
+./configure --prefix=/usr
+PAGE=A4 ./configure --prefix=/usr
+clear
+make -j4
+make install
+clear
+cd ..
+rm -Rf groff-1.23.0
+clear
 exit
