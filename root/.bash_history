@@ -1,19 +1,3 @@
-rm -Rf sed-4.9
-exit
-clear
-cd sources/q
-cd sources/
-clear
-tar -xvf psmisc-23.7.tar.xz 
-cd psmisc-23.7
-./configure --prefix=/usr
-make
-make check
-make install
-cd ..
-rm -Rf psmisc-23.7
-clear
-exit
 clear
 neofetch
 cd sources/
@@ -495,6 +479,22 @@ install -vDm644 doc/{awkforai.txt,*.{eps,pdf,jpg}} -t /usr/share/doc/gawk-5.3.2
 clear
 cd ..
 rm -Rf gawk-5.3.2
+clear
+cd ..
+exit
+clear
+cd souq
+cd sources/
+clear
+tar -xvf findutils-4.10.0.tar.xz 
+cd findutils-4.10.0
+clear
+./configure --prefix=/usr --localstatedir=/var/lib/locate
+make -j4
+make install
+clear
+cd ..
+rm -Rf findutils-4.10.0
 clear
 cd ..
 exit
