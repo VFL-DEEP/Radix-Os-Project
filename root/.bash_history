@@ -1,14 +1,3 @@
-clear
-neofetch
-nano /etc/os-release 
-neofetch
-clear
-neofetch
-ls
-nano README.md 
-git status
-clear
-cd sources/
 tar -xvf ncurses-6.5-20250809.tgz 
 cd ncurses-6.5-20250809
 clear
@@ -480,5 +469,32 @@ clear
 cd ../..
 clear
 rm -Rf kmod-34.2
+clear
+exit
+cd sources/
+tar -xvf coreutils-9.7
+tar -xvf coreutils-9.7.tar.xz 
+cd coreutils-9.7
+clear
+patch -Np1 -i ../coreutils-9.7-upstream_fix-1.patch
+patch -Np1 -i ../coreutils-9.7-i18n-1.patch
+autoreconf -fv
+automake -af
+FORCE_UNSAFE_CONFIGURE=1 ./configure             --prefix=/usr                        --enable-no-install-program=kill,uptime
+clear
+make -j4
+make NON_ROOT_USERNAME=tester check-root
+groupadd -g 102 dummy -U tester
+chown -R tester . 
+su tester -c "PATH=$PATH make -k RUN_EXPENSIVE_TESTS=yes check"    < /dev/null
+groupdel dummy
+clear
+make install
+mv -v /usr/bin/chroot /usr/sbin
+mv -v /usr/share/man/man1/chroot.1 /usr/share/man/man8/chroot.8
+sed -i 's/"1"/"8"/' /usr/share/man/man8/chroot.8
+clear
+cd ..
+rm -Rf coreutils-9.7
 clear
 exit
