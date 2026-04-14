@@ -1,225 +1,3 @@
-make -j4
-clear
-make check
-make install
-cd ..
-rm -Rf bison-3.8.2
-clear
-exit
-clear
-cd sources/
-tar -xvf grep-3.12.tar.xz 
-cd grep-3.12
-clear
-sed -i "s/echo/#echo/" src/egrep.sh
-./configure --prefix=/usr
-make -j4
-make check
-make install
-cd ..
-rm -Rf grep-3.12
-exit
-clear
-cd sources/
-tar -xvf bash-5.3.tar.gz 
-cd bash-5.3
-clear
-./configure --prefix=/usr                         --without-bash-malloc                 --with-installed-readline             --docdir=/usr/share/doc/bash-5.3
-clear
-make -j4
-chown -R tester .
-clear
-LC_ALL=C.UTF-8 su -s /usr/bin/expect tester << "EOF"
-set timeout -1
-spawn make tests
-expect eof
-lassign [wait] _ _ _ value
-exit $value
-EOF
-
-clear
-make install
-clear
-exec /usr/bin/bash --login
-clear
-exit
-clear
-cd sources/
-tar -xvf libtool-2.5.4.tar.xz 
-cd libtool-2.5.4
-./configure --prefix=/usr
-make
-clear
-make check
-clear
-make install
-rm -fv /usr/lib/libltdl.a
-clear
-cd ..
-rm -Rf libtool-2.5.4
-exit
-clear
-cd sources/
-clear
-tar -xvf gdbm-1.26.tar.gz 
-cd gdbm-1.26
-clear
-./configure --prefix=/usr                --disable-static             --enable-libgdbm-compat
-make -j4
-make check
-clear
-make install
-clear
-cd ..
-rm -Rf gdbm-1.26
-clear
-exit
-clear
-cd sources/
-ls
-clear
-tar -xvf gperf-3.3.tar.gz 
-cd gperf-3.3
-clear
-./configure --prefix=/usr --docdir=/usr/share/doc/gperf-3.3
-make -j4
-clear
-make check
-clear
-make install
-cd ..
-rm -Rf gperf-3.3
-clear
-exit
-clear
-cd sources/
-clear
-tar -xvf expat-2.7.1.tar.xz 
-cd expat-2.7.1
-clear
-./configure --prefix=/usr                --disable-static             --docdir=/usr/share/doc/expat-2.7.1
-make -j4
-make check
-make install
-install -v -m644 doc/*.{html,css} /usr/share/doc/expat-2.7.1
-cd ..
-rm -Rf expat-2.7.1
-exit
-clear
-cd sources/
-tar -xvf inetutils-2.6.tar.xz 
-cd inetutils-2.6
-clear
-sed -i 's/def HAVE_TERMCAP_TGETENT/ 1/' telnet/telnet.c
-./configure --prefix=/usr                    --bindir=/usr/bin                --localstatedir=/var             --disable-logger                 --disable-whois                  --disable-rcp                    --disable-rexec                  --disable-rlogin                 --disable-rsh                    --disable-servers
-make -j4
-make install
-clear
-mv -v /usr/{,s}bin/ifconfig
-clear
-cd ..
-rm -Rf inetutils-2.6
-clear
-exit
-clear
-neofetch
-clear
-cd sources/
-cleart
-clear
-tar -xvf less-679.tar.gz 
-cd less-679
-clear
-./configure --prefix=/usr --sysconfdir=/etc
-make -j4
-make check
-make install
-clear
-cd ..
-rm -Rf less-679
-clear
-exit
-clear
-cd sources/
-tar -xvf perl-5.42.0.tar.xz 
-cd perl-5.42.0
-clear
-export BUILD_ZLIB=False
-export BUILD_BZIP2=0
-sh Configure -des                                                       -D prefix=/usr                                             -D vendorprefix=/usr                                       -D privlib=/usr/lib/perl5/5.42/core_perl                   -D archlib=/usr/lib/perl5/5.42/core_perl                   -D sitelib=/usr/lib/perl5/5.42/site_perl                   -D sitearch=/usr/lib/perl5/5.42/site_perl                  -D vendorlib=/usr/lib/perl5/5.42/vendor_perl               -D vendorarch=/usr/lib/perl5/5.42/vendor_perl              -D man1dir=/usr/share/man/man1                             -D man3dir=/usr/share/man/man3                             -D pager="/usr/bin/less -isR"                              -D useshrplib                                              -D usethreads
-clear
-make -j4
-make install
-unset BUILD_ZLIB BUILD_BZIP2
-clear
-cd ..
-rm -Rf perl-5.42.0
-clear
-exit
-clear
-cd sources/
-ls
-clear
-tar -xvf XML-Parser-2.47.tar.gz 
-cd XML-Parser-2.47
-clear
-perl Makefile.PL
-make -j4
-make install
-clear
-cd ..
-rm -Rf XML-Parser-2.47
-clear
-exit
-clear
-cd sources/
-tar -xvf intltool-0.51.0.tar.gz 
-cd intltool-0.51.0
-clear
-sed -i 's:\\\${:\\\$\\{:' intltool-update.in
-./configure --prefix=/usr
-make -j4
-make install
-clear
-install -v -Dm644 doc/I18N-HOWTO /usr/share/doc/intltool-0.51.0/I18N-HOWTO
-cd ..
-rm -Rf intltool-0.51.0
-clear
-exit
-clear
-neofetch
-cd sources/
-tar -xvf autoconf-2.72.tar.xz 
-cd autoconf-2.72
-clear
-./configure --prefix=/usr
-make -j4
-make install
-cd ..
-rm -Rf autoconf-2.72
-clear
-exit
-clear
-neofetch
-ls
-,
-exit
-clear
-cd sources/
-clear
-tar -xvf automake-1.18.1.tar.xz 
-cd automake-1.18.1
-clear
-./configure --prefix=/usr --docdir=/usr/share/doc/automake-1.18.14
-./configure --prefix=/usr --docdir=/usr/share/doc/automake-1.18.1
-clear
-make -j4
-make install
-clear
-cd ..
-rm -Rf automake-1.18.1
-clear
-exit
 clear
 cd sources/
 clear
@@ -496,5 +274,227 @@ make install
 clear
 cd ..
 rm -Rf groff-1.23.0
+clear
+exit
+clear
+cd sources/
+clear
+tar -xvf grub-2.12.tar.xz 
+cd grub-2.12
+clear
+mkdir -pv /usr/share/fonts/unifont && gunzip -c ../unifont-16.0.04.pcf.gz > /usr/share/fonts/unifont/unifont.pcf
+cd ..
+clear
+tar -xvf freetype-2.13.3.tar.xz 
+cd freetype-2.13.3
+clear
+tar -xf ../freetype-doc-2.13.3.tar.xz --strip-components=2 -C docs
+sed -ri "s:.*(AUX_MODULES.*valid):\1:" modules.cfg && sed -r "s:.*(#.*SUBPIXEL_RENDERING) .*:\1:"     -i include/freetype/config/ftoption.h  && ./configure --prefix=/usr --enable-freetype-config --disable-static && make
+clear
+make install
+cp -v -R docs -T /usr/share/doc/freetype-2.13.3 && rm -v /usr/share/doc/freetype-2.13.3/freetype-config.1
+clear
+cd ..
+rm -Rf freetype-2.13.3
+clear
+cd grub-2.12
+mkdir -pv /usr/share/fonts/unifont && gunzip -c ../unifont-16.0.04.pcf.gz > /usr/share/fonts/unifont/unifont.pcf
+unset {C,CPP,CXX,LD}FLAGS
+clear
+echo depends bli part_gpt > grub-core/extra_deps.lst
+clear
+./configure --prefix=/usr                    --sysconfdir=/etc                --disable-efiemu                 --with-platform=efi              --target=x86_64                  --disable-werror     &&
+clear
+./configure --prefix=/usr                    --sysconfdir=/etc                --disable-efiemu                 --with-platform=efi              --target=x86_64                  --disable-werror     &&
+./configure --prefix=/usr                    --sysconfdir=/etc                --disable-efiemu                 --with-platform=efi              --target=x86_64                  --disable-werror    
+clear
+make -j4
+cd ..
+tar -xvf efibootmgr-18.tar.gz 
+cd efibootmgr-18
+clear
+cd ..
+tar -xvf efivar-39.tar.gz 
+cd efivar-39
+make ENABLE_DOCS=0
+make install ENABLE_DOCS=0 LIBDIR=/usr/lib
+install -vm644 docs/efivar.1 /usr/share/man/man1 && install -vm644 docs/*.3      /usr/share/man/man3
+cd ..
+rm -Rf efivar-39
+clear
+tar -xvf popt-1.19.tar.gz 
+cd popt-1.19
+clear
+./configure --prefix=/usr --disable-static && make
+make install
+clear
+install -v -m755 -d /usr/share/doc/popt-1.19 && install -v -m644 doxygen/html/* /usr/share/doc/popt-1.19
+cd ..
+rm -Rf popt-1.19
+clear
+cd efibootmgr-18
+make EFIDIR=LFS EFI_LOADER=grubx64.efi
+make install EFIDIR=LFS
+cd ..
+rm -Rf efibootmgr-18
+clear
+cd grub-2.12
+mkdir -pv /usr/share/fonts/unifont && gunzip -c ../unifont-16.0.04.pcf.gz > /usr/share/fonts/unifont/unifont.pcf
+unset {C,CPP,CXX,LD}FLAGS
+make clear
+clear
+echo depends bli part_gpt > grub-core/extra_deps.lst
+./configure --prefix=/usr                    --sysconfdir=/etc                --disable-efiemu                 --with-platform=efi              --target=x86_64                  --disable-werror
+clesr
+clear
+make -j4
+clear
+ls -l /usr/share/fonts/unifont/unifont.pcf
+make -j4
+clear
+cd ..
+tar -xvf unifont-17.0.04.pcf.gz 
+gunzip unifont-17.0.04.pcf.gz 
+mkdir -v -p /usr/share/fonts/unifont
+mv -v unifont-17.0.04.pcf /usr/share/fonts/unifont/unifont.pcf
+cd /sources/grub-2.12
+make
+make install
+clear
+mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions
+clear
+install -vm755 grub-mkfont /usr/bin/ && install -vm644 ascii.h widthspec.h *.pf2 /usr/share/grub/
+clear
+install -vm755 grub-mount /usr/bin/
+cd ..
+tar -xvf fuse-3.17.4.tar.gz 
+cd fuse-3.17.4
+clear
+ls
+sed -i '/^udev/,$ s/^/#/' util/meson.build && mkdir build && cd    build && meson setup --prefix=/usr --buildtype=release .. && ninja
+pushd
+pushd ..
+popd
+clear
+ninja install                  && chmod u+s /usr/bin/fusermount3 && cd ..                          && cp -Rv doc/html -T /usr/share/doc/fuse-3.17.4 && install -v -m644   doc/{README.NFS,kernel.txt}                    /usr/share/doc/fuse-3.17.4
+clear
+cd ..
+rm -Rf fuse-3.17.4
+clear
+tar -xvf LVM2.2.03.34.tgz 
+cd LVM2.2.03.34
+clear
+cd ..
+tar -xvf libaio-0.3.113.tar.gz 
+cd libaio-0.3.113
+clear
+sed -i '/install.*libaio.a/s/^/#/' src/Makefile
+case "$(uname -m)" in   i?86) sed -e "s/off_t/off64_t/" -i harness/cases/23.t ;; esac
+make -j4
+make install
+cd ..
+rm -Rf libaio-0.3.113
+clear
+cd LVM2.2.03.34
+clear
+PATH+=:/usr/sbin                ./configure --prefix=/usr                   --enable-cmdlib                 --enable-pkgconfig              --enable-udev_sync  && make
+clear
+make -C tools install_tools_dynamic && make -C udev  install               && make -C libdm install
+make install
+make -j4
+clear
+PATH+=:/usr/sbin ./configure --prefix=/usr --enable-cmdlib --enable-pkgconfig --enable-udev_sync
+clear
+make -j4
+clear
+PATH+=:/usr/sbin ./configure --prefix=/usr --enable-cmdlib --enable-pkgconfig --enable-udev_sync
+export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig:$PKG_CONFIG_PATH
+clear
+PATH+=:/usr/sbin ./configure --prefix=/usr --enable-cmdlib --enable-pkgconfig --enable-udev_sync
+clear
+cd ..
+tar -xvf eudev-3.2.14.tar.gz 
+cd eudev-3.2.14
+clear
+ls
+./configure --prefix=/usr                       --bindir=/usr/bin                   --sysconfdir=/etc                   --libdir=/usr/lib                   --with-rootprefix=                  --with-rootlibdir=/usr/lib             --enable-manpages                   --disable-static
+clear
+make -j4
+make install
+clear
+ls -l /usr/lib/pkgconfig/libudev.pc
+cd /sources/LVM2.2.03.34
+export PKG_CONFIG_PATH=/usr/lib/pkgconfig
+PATH+=:/usr/sbin ./configure --prefix=/usr --enable-cmdlib --enable-pkgconfig --enable-udev_sync
+make -j4
+clear
+make -C tools install_tools_dynamic && make -C udev  install               && make -C libdm install
+clear
+LC_ALL=en_US.UTF-8 make check_local
+clear
+cd ..
+tar -xvf which-2.16.tar.gz 
+cd which-2.16
+clear
+./configure --prefix=/usr && make && make install
+clear
+cd ..
+rm -Rf which-2.16
+clear
+tar -xvf which-2.21.tar.gz 
+cd which-2.21
+clear
+./configure --prefix=/usr && make && make install
+clear
+cd ..
+rm -Rf which-2.16.tar.gz 
+rm -Rf which-2.21
+clear
+cd LVM2.2.03.34
+clear
+PATH+=:/usr/sbin                ./configure --prefix=/usr                   --enable-cmdlib                 --enable-pkgconfig              --enable-udev_sync  && make
+make -C tools install_tools_dynamic && make -C udev  install               && make -C libdm install
+clear
+   --with-thin-check=         --with-thin-dump=          --with-thin-repair=        --with-thin-restore=       --with-cache-check=        --with-cache-dump=         --with-cache-repair=       --with-cache-restore= \
+clear
+make install
+clear
+rm -fv /usr/lib/udev/rules.d/69-dm-lvm.rules
+cd ..
+rm -Rf LVM2.2.03.34
+clear
+cd grub-2.12
+clear
+mkdir -pv /usr/share/fonts/unifont && gunzip -c ../unifont-16.0.04.pcf.gz > /usr/share/fonts/unifont/unifont.pcf
+clear
+unset {C,CPP,CXX,LD}FLAGS
+echo depends bli part_gpt > grub-core/extra_deps.lst
+clear
+./configure --prefix=/usr                    --sysconfdir=/etc                --disable-efiemu                 --with-platform=efi              --target=x86_64                  --disable-werror
+clea
+clear
+make -j4
+clear
+file /usr/share/fonts/unifont/unifont.pcf
+rm -v /usr/share/fonts/unifont/unifont.pcf
+clear
+cd /sources
+# Eğer elinde .pcf.gz varsa:
+gunzip -c unifont-17.0.04.pcf.gz > /usr/share/fonts/unifont/unifont.pcf
+gunzip -c unifont-17.0.04.pcf.gz > /usr/share/fonts/unifont/unifont.pcf
+ls -lh /usr/share/fonts/unifont/unifont.pcf
+file /usr/share/fonts/unifont/unifont.pcf
+clear
+cd /sources/grub-2.12
+make
+clear
+make install && mv -v /etc/bash_completion.d/grub /usr/share/bash-completion/completions
+clear
+install -vm755 grub-mkfont /usr/bin/ && install -vm644 ascii.h widthspec.h *.pf2 /usr/share/grub/
+install -vm755 grub-mount /usr/bin/
+clear
+ls -R /boot/efi
+cd ..
+rm -Rf grub-2.12
 clear
 exit
