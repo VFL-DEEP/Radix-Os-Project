@@ -71,3 +71,16 @@ cd ..
 rm -Rf libpipeline-1.5.8
 clear
 exit
+clear
+cd sources/
+clear
+tar -xvf make-4.4.1.tar.gz 
+cd make-4.4.1
+clear
+./configure --prefix=/usr
+make
+make install
+cd ..
+rm -Rf make-4.4.1
+clear
+exit
