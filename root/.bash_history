@@ -38,3 +38,24 @@ cd ..
 rm -Rf iproute2-6.16.0
 clear
 exit
+clear
+cd sources/
+clear
+tar -xvf kbd-2.8.0
+tar -xvf kbd-2.8.0.tar.xz 
+cd kbd-2.8.0
+clear
+patch -Np1 -i ../kbd-2.8.0-backspace-1.patch
+sed -i '/RESIZECONS_PROGS=/s/yes/no/' configure
+sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in
+clear
+./configure --prefix=/usr --disable-vlock
+clear
+make -j4
+clear
+make install
+clear
+cd ..
+rm -Rf kbd-2.8.0
+clear
+exit
