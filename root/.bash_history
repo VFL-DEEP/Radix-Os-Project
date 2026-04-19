@@ -84,3 +84,14 @@ cd ..
 rm -Rf make-4.4.1
 clear
 exit
+cd sources/
+tar -xvf patch-2.8.tar.xz 
+cd patch-2.8
+clear
+./configure --prefix=/usr
+make -j4
+make install
+cd ..
+rm -Rf patch-2.8
+clear
+exit
