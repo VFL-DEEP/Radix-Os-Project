@@ -113,3 +113,19 @@ cd ..
 rm -Rf tar-1.35
 clear
 exit
+clear
+cd sources/
+tar -xvf texinfo-7.2.tar.xz 
+cd texinfo-7.2
+clear
+sed 's/! $output_file eq/$output_file ne/' -i tp/Texinfo/Convert/*.pm
+./configure --prefix=/usr
+make -j4
+make install
+cd ..
+cd texinfo-7.2
+make TEXMF=/usr/share/texmf install-tex
+cd ..
+rm -Rf texinfo-7.2
+clear
+exit
