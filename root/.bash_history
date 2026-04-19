@@ -59,3 +59,15 @@ cd ..
 rm -Rf kbd-2.8.0
 clear
 exit
+clear
+cd sources/
+tar -xvf libpipeline-1.5.8.tar.gz 
+cd libpipeline-1.5.8
+clear
+./configure --prefix=/usr
+make
+make install
+cd ..
+rm -Rf libpipeline-1.5.8
+clear
+exit
