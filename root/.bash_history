@@ -95,3 +95,21 @@ cd ..
 rm -Rf patch-2.8
 clear
 exit
+clear
+cd sources/
+clear
+tar -xvf tar-1.35.tar.xz 
+clear
+FORCE_UNSAFE_CONFIGURE=1  ./configure --prefix=/usr
+cd tar-1.35
+FORCE_UNSAFE_CONFIGURE=1  ./configure --prefix=/usr
+make -j4
+clear
+make check
+clear
+make install
+clear
+cd ..
+rm -Rf tar-1.35
+clear
+exit
