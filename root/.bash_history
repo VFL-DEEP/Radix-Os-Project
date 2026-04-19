@@ -145,3 +145,14 @@ cd ..
 rm -Rf vim-9.1.1629
 clear
 exit
+clear
+cd sources/
+tar -xvf markupsafe-3.0.2.tar.gz 
+cd markupsafe-3.0.2
+clear
+pip3 wheel -w dist --no-cache-dir --no-build-isolation --no-deps $PWD
+pip3 install --no-index --find-links dist Markupsafe
+cd ..
+rm -Rf markupsafe-3.0.2
+clear
+exit
