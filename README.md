@@ -78,6 +78,7 @@ Enter the Chroot Virtual Environment and test everything!
 
 
 6. You have successfully reached to the end of setup phase. We will now set up a chroot environment to ensure a safe and isolated testing experience for our distribution.
+
 NOTE:(Once you finished using, go back to the 5th part and unmount before leaving!)
 
 - **Enter the chroot environment with these commands**:
