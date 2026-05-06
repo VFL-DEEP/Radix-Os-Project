@@ -17,7 +17,7 @@
    - **You can change to root user and create the variable with this command**:
      ```
      sudo su
-     export radixlinux=/home/yourusernamehere/Radix-Os-Project
+     export radixlinux=/home/yourusernamehere/Radix-Linux
      ```
 
 
