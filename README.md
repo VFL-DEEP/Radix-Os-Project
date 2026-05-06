@@ -38,7 +38,6 @@
      ```
 
 3. After verifying the environment variables, we need to create essential system directories and mount points required for the kernel to interact with your hardware.
-     ```
 - **Now create new directories with this command**:
      ```
      mkdir $radixlinux/sys
