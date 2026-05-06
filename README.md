@@ -29,7 +29,7 @@
      ```
 
 
-Note: Since variables and umask settings are session-specific, you must redefine them whenever you open a new terminal or restart your session. To verify that they are correctly applied, run the following command:
+**Note:** Since variables and umask settings are session-specific, you must redefine them whenever you open a new terminal or restart your session. To verify that they are correctly applied, run the following command:
 
    - **You can set check the variable and umask with this command**:
      ```
