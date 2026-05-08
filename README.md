@@ -9,7 +9,7 @@
 
 <hr>
 
-## How to install Radix Linux on your Virtual Chroot Environment?
+## How to install Radix Linux on your Chroot VirtualEnvironment?
 
 
 1. To interact with your filesystem mount points, you must first switch to the root user. We will also initialize a global variable to simplify the commands used throughout this guide.
