@@ -196,3 +196,195 @@ ls
 clear
 neofetch
 exit
+clear
+neofetch 
+clear
+useradd -m <tester>
+useradd -m tester
+clear
+cat > /etc/profile << "EOF"
+# Begin /etc/profile
+# Written for Beyond Linux From Scratch
+# by James Robertson <jameswrobertson@earthlink.net>
+# modifications by Dagmar d'Surreal <rivyqntzne@pbzpnfg.arg>
+
+# System wide environment variables and startup programs.
+
+# System wide aliases and functions should go in /etc/bashrc.  Personal
+# environment variables and startup programs should go into
+# ~/.bash_profile.  Personal aliases and functions should go into
+# ~/.bashrc.
+
+# Functions to help us manage paths.  Second argument is the name of the
+# path variable to be modified (default: PATH)
+pathremove () {
+        local IFS=':'
+        local NEWPATH
+        local DIR
+        local PATHVARIABLE=${2:-PATH}
+        for DIR in ${!PATHVARIABLE} ; do
+                if [ "$DIR" != "$1" ] ; then
+                  NEWPATH=${NEWPATH:+$NEWPATH:}$DIR
+                fi
+        done
+        export $PATHVARIABLE="$NEWPATH"
+}
+
+pathprepend () {
+        pathremove $1 $2
+        local PATHVARIABLE=${2:-PATH}
+        export $PATHVARIABLE="$1${!PATHVARIABLE:+:${!PATHVARIABLE}}"
+}
+
+pathappend () {
+        pathremove $1 $2
+        local PATHVARIABLE=${2:-PATH}
+        export $PATHVARIABLE="${!PATHVARIABLE:+${!PATHVARIABLE}:}$1"
+}
+
+export -f pathremove pathprepend pathappend
+
+# Set the initial path
+export PATH=/usr/bin
+
+# Attempt to provide backward compatibility with LFS earlier than 11
+if [ ! -L /bin ]; then
+        pathappend /bin
+fi
+
+if [ $EUID -eq 0 ] ; then
+        pathappend /usr/sbin
+        if [ ! -L /sbin ]; then
+                pathappend /sbin
+        fi
+        unset HISTFILE
+fi
+
+# Set up some environment variables.
+export HISTSIZE=1000
+export HISTIGNORE="&:[bf]g:exit"
+
+# Set some defaults for graphical systems
+export XDG_DATA_DIRS=${XDG_DATA_DIRS:-/usr/share}
+export XDG_CONFIG_DIRS=${XDG_CONFIG_DIRS:-/etc/xdg}
+export XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-/tmp/xdg-$USER}
+
+for script in /etc/profile.d/*.sh ; do
+        if [ -r $script ] ; then
+                . $script
+        fi
+done
+
+unset script
+
+# End /etc/profile
+EOF
+
+clear
+install --directory --mode=0755 --owner=root --group=root /etc/profile.d
+clear
+" Begin .vimrc
+
+set columns=80
+set wrapmargin=8
+set ruler
+
+" End .vimrc
+clear
+make install-random
+clear
+cd sources/
+tar -xvf make-ca-1.16.1.tar.gz 
+cd make-ca-1.16.1
+clear
+/usr/sbin/make-ca -g
+cat > /etc/cron.weekly/update-pki.sh << "EOF" &&
+#!/bin/bash
+/usr/sbin/make-ca -g
+EOF
+ chmod 754 /etc/cron.weekly/update-pki.sh
+cd ..
+tar -xvf p11-kit-0.25.5.tar.xz 
+cd  p11-kit-0.25.5
+sed '20,$ d' -i trust/trust-extract-compat &&
+cat >> trust/trust-extract-compat << "EOF"
+# Copy existing anchor modifications to /etc/ssl/local
+/usr/libexec/make-ca/copy-trust-modifications
+
+# Update trust stores
+/usr/sbin/make-ca -r
+EOF
+
+mkdir p11-build && cd    p11-build && meson setup ..                  --prefix=/usr             --buildtype=release       -D trust_paths=/etc/pki/anchors && ninja
+clear
+wget http://www.cacert.org/certs/root.crt && wget http://www.cacert.org/certs/class3.crt && openssl x509 -in root.crt -text -fingerprint -setalias "CAcert Class 1 root"         -addtrust serverAuth -addtrust emailProtection -addtrust codeSigning         > /etc/ssl/local/CAcert_Class_1_root.pem && openssl x509 -in class3.crt -text -fingerprint -setalias "CAcert Class 3 root"         -addtrust serverAuth -addtrust emailProtection -addtrust codeSigning         > /etc/ssl/local/CAcert_Class_3_root.pem && /usr/sbin/make-ca -r
+clear
+export _PIP_STANDALONE_CERT=/etc/pki/tls/certs/ca-bundle.crt
+mkdir -pv /etc/profile.d &&
+cat > /etc/profile.d/pythoncerts.sh << "EOF"
+# Begin /etc/profile.d/pythoncerts.sh
+
+export _PIP_STANDALONE_CERT=/etc/pki/tls/certs/ca-bundle.crt
+
+# End /etc/profile.d/pythoncerts.sh
+EOF
+
+sed '20,$ d' -i trust/trust-extract-compat &&
+cat >> trust/trust-extract-compat << "EOF"
+# Copy existing anchor modifications to /etc/ssl/local
+/usr/libexec/make-ca/copy-trust-modifications
+
+# Update trust stores
+/usr/sbin/make-ca -r
+EOF
+
+cd ..
+cd ..
+tar -xvf libtasn1-4.20.0.tar.gz 
+cd libtasn1-4.20.0
+clear
+./configure --prefix=/usr --disable-static && make
+make install
+make -C doc/reference install-data-local
+clear
+cd ..
+rm -Rf libtasn1-4.20.0
+clear
+cd p11-kit-0.25.5
+cd p11-build/
+clear
+meson setup ..                  --prefix=/usr             --buildtype=release       -D trust_paths=/etc/pki/anchors && ninja
+clear
+ninja install && ln -sfv /usr/libexec/p11-kit/trust-extract-compat         /usr/bin/update-ca-certificates
+ln -sfv ./pkcs11/p11-kit-trust.so /usr/lib/libnssckbi.so
+clear
+cd ..
+rm -Rf p11-build/
+cd ..
+rm -Rf p11-kit-0.25.5
+clear
+cd make-ca-1.16.1
+clear
+make install && install -vdm755 /etc/ssl/local
+/usr/sbin/make-ca -g
+cat > /etc/cron.weekly/update-pki.sh << "EOF" &&
+#!/bin/bash
+/usr/sbin/make-ca -g
+EOF
+ chmod 754 /etc/cron.weekly/update-pki.sh
+clear
+export _PIP_STANDALONE_CERT=/etc/pki/tls/certs/ca-bundle.crt
+mkdir -pv /etc/profile.d &&
+cat > /etc/profile.d/pythoncerts.sh << "EOF"
+# Begin /etc/profile.d/pythoncerts.sh
+
+export _PIP_STANDALONE_CERT=/etc/pki/tls/certs/ca-bundle.crt
+
+# End /etc/profile.d/pythoncerts.sh
+EOF
+
+clear
+cd ..
+rm -Rf make-ca-1.16.1
+clear
+exit
