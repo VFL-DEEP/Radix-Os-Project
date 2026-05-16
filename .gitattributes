@@ -1,6 +1,0 @@
-/etc** filter=lfs diff=lfs merge=lfs -text
-etc/** filter=lfs diff=lfs merge=lfs -text
-tools/** filter=lfs diff=lfs merge=lfs -text
-usr/** filter=lfs diff=lfs merge=lfs -text
-var/** filter=lfs diff=lfs merge=lfs -text
-sources/** filter=lfs diff=lfs merge=lfs -text
